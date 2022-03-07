@@ -7,8 +7,12 @@
 <h1>Index</h1>
 
 <p>
-    <a class = "btn btn-secondary" asp-action="Create">Create New</a>
+    <a class = "btn btn-secondary" asp-action="CrearAlumno">Create New</a>
 </p>
+<form asp-controller="Alumno" asp-action="Index">
+    <input type="text" name="texto"/>
+    <input type="submit" class="btn btn-primary" value="Buscar"/>
+</form>
 <table class="table">
     <thead>
         <tr>

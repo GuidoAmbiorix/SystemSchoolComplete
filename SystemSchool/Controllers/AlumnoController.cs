@@ -7,10 +7,18 @@ namespace SystemSchool.Controllers
     public class AlumnoController : Controller
     {
         readonly SchoolDAL Context = new SchoolDAL();
-        public IActionResult Index()
+        public IActionResult Index(string texto)
         {
-            IEnumerable<Alumno> ListadoAlumnos = Context.MostrarAlumnos();
-            return View(ListadoAlumnos);
+            if(texto != null )
+            {
+                IEnumerable<Alumno> ListadoAlumno = Context.Buscador(texto);
+                return View(ListadoAlumno);
+            }
+            
+                IEnumerable<Alumno> ListadoAlumnos = Context.MostrarAlumnos();
+                return View(ListadoAlumnos);
+          
+           
         }
 
         //GET

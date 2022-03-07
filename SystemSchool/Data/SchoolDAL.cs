@@ -121,6 +121,41 @@ namespace SystemSchool.Data
 
         }
 
+        //Buscador
+        public IEnumerable<Alumno> Buscador(string texto)
+        {
+            IList<Alumno> ListadoAlumno = new List<Alumno>();
 
+            using(SqlConnection con = new SqlConnection(connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("SP_Buscador", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                con.Open();
+
+                cmd.Parameters.AddWithValue("@texto", texto);
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    Alumno Alumno = new Alumno();
+                    Alumno.Matricula_Alumno = Convert.ToInt32(dr["Matricula_Alumno"].ToString());
+                    Alumno.Nombre_Alumno = dr["Nombre_Alumno"].ToString();
+                    Alumno.Edad_Alumno = Convert.ToInt32(dr["Edad_Alumno"].ToString());
+                    Alumno.Semestre_Alumno = dr["Semestre_Alumno"].ToString();
+                    Alumno.Genero_Alumno = dr["Genero_Alumno"].ToString();
+
+                    ListadoAlumno.Add(Alumno);
+
+                }
+                con.Close();
+            }
+
+
+            return ListadoAlumno;
+
+        }
+        }
     }
-}
+
