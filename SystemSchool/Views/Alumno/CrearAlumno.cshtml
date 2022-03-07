@@ -1,0 +1,48 @@
+﻿@model SystemSchool.Models.Alumno
+
+@{
+    ViewData["Title"] = "Crear Alumno";
+}
+
+<h1>Crear Alumno</h1>
+
+<h4>Alumno</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CrearAlumno">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Nombre_Alumno" class="control-label"></label>
+                <input asp-for="Nombre_Alumno" class="form-control" />
+                <span asp-validation-for="Nombre_Alumno" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Edad_Alumno" class="control-label"></label>
+                <input asp-for="Edad_Alumno" class="form-control" />
+                <span asp-validation-for="Edad_Alumno" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Semestre_Alumno" class="control-label"></label>
+                <input asp-for="Semestre_Alumno" class="form-control" />
+                <span asp-validation-for="Semestre_Alumno" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Genero_Alumno" class="control-label"></label>
+                <input asp-for="Genero_Alumno" class="form-control" />
+                <span asp-validation-for="Genero_Alumno" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary my-1" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a class="btn btn-secondary" asp-action="Index">Volver a la lista</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
